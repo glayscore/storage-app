@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      target: production-stage
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=1579
+      - DATABASE_NAME=storage
+      - DB_LOGGING=true
+      - TYPEORM_SYNC=false
+
+    command: ["sh", "-c", "npm run typeorm migration:run && npm run start:dev"]
+    volumes:
+      - .:/usr/src/app
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1579
+      MYSQL_DATABASE: storage
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+  test:
+    build:
+      context: .
+      target: test
+    environment:
+      - NODE_ENV=test
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=1579
+      - DATABASE_NAME=storage_test
+      - DB_LOGGING=true
+      - TYPEORM_SYNC=false
+
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["npm", "run", "test:e2e"]
+    volumes:
+      - .:/usr/src/app
+
+volumes:
+  db-data:

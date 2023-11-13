@@ -1,0 +1,21 @@
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    environment:
+      - NODE_ENV=test
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=1579
+      - DATABASE_NAME=storage_test
+      - DB_LOGGING=true
+      - TYPEORM_SYNC=false
+
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["npm", "run", "test:e2e"]
+    volumes:
+      - .:/usr/src/app
