@@ -1,64 +1,64 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Storage App
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![CircleCI](https://img.shields.io/circleci/build/github/glayscore/storage-app/main)](https://circleci.com/gh/glayscore/storage-app/tree/main)
+[![NPM Version](https://img.shields.io/npm/v/storage.svg)](https://www.npmjs.com/package/storage)
+[![License](https://img.shields.io/npm/l/storage.svg)](https://github.com/glayscore/storage-app/blob/main/LICENSE)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A Node.js application built with NestJS and TypeORM.
 
 ## Installation
 
-```bash
-$ npm install
-```
+0. Clone the repository:
 
-## Running the app
+   ```bash
+   git clone https://github.com/glayscore/storage-app.git
 
-```bash
-# development
-$ npm run start
+1. Install dependencies:
+   cd storage-app
+   npm install
 
-# watch mode
-$ npm run start:dev
+2. Set up environment variables:
 
-# production mode
-$ npm run start:prod
-```
+   Create a .env file in the root directory and configure the following variables:
 
-## Test
+    DATABASE_HOST=localhost
+    DATABASE_USER=root
+    DATABASE_PASSWORD=your_password
+    DATABASE_NAME=storage
 
-```bash
-# unit tests
-$ npm run test
+## Running the App
 
-# e2e tests
-$ npm run test:e2e
+  # Development mode
+    npm run start:dev
 
-# test coverage
-$ npm run test:cov
-```
+  # Production mode
+    npm run start:prod  
+
+## Docker Support
+
+    # Build and start the containers
+    npm run start:docker
+
+    # Stop the containers
+    npm run stop:docker
+
+## Database Migrations
+
+    # Create a new migration
+    npm run migration:create migration_name
+
+    # Generate a migration from changes in the entities
+    npm run migration:generate
+
+    # Run migrations
+    npm run migration:run
+
+    # Rollback the last migration
+    npm run migration:down
+
+    # Drop all database tables (CAUTION)
+    npm run migration:dropAll
 
 ## License
+    This project is licensed under the MIT License - see the LICENSE file for details.
 
-Nest is [MIT licensed](LICENSE).
-# storage-app
